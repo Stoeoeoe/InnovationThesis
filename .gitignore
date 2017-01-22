@@ -88,5 +88,7 @@ ENV/
 # Rope project settings
 .ropeproject
 
+.idea
 .vagrant
 app/temp/Miniconda2-latest-Linux-x86_64.sh
+.idea/vcs.xml

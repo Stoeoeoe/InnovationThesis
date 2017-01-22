@@ -1,5 +1,9 @@
 set -e
 
+# Clean everything
+rm -r /vagrant/app
+
+# Create folders
 mkdir -p /vagrant/app/{libs,temp}
 mkdir /vagrant/app/libs/dragnet3
 
@@ -21,8 +25,11 @@ rm Miniconda2-latest-Linux-x86_64.sh
 	
 # Create a Python 2.7 environment
 export PATH=$HOME/miniconda2/bin:$PATH
-conda_deps='pip numpy scipy'
+conda_deps='pip numpy scipy matplotlib requests portalocker'
+
 conda create -m -p $HOME/py --yes $conda_deps python=2.7
+conda create -m -p $HOME/py3 --yes $conda_deps python=3.5
+
 export PATH=$HOME/py/bin:$PATH
 
 # configure conda for future login (for vagrant)
@@ -47,3 +54,5 @@ cd /vagrant/app/libs/dragnet3/dragnet
 sudo pip install -r requirements.txt    
 sudo make install
 make test
+
+#easy-install dist/ ....
